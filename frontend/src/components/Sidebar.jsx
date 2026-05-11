@@ -1,25 +1,84 @@
-import { Link } from "react-router-dom"
+import { useState } from "react"
+import { Link, useLocation, useNavigate } from "react-router-dom"
+import Icon from "./Icon"
+
+const links = [
+  { to: "/", label: "Dashboard", icon: "chart" },
+  { to: "/activity", label: "Activity", icon: "run" },
+  { to: "/profile", label: "Profile", icon: "user" },
+  { to: "/recommendations", label: "AI Recommendations", icon: "ai" },
+  { to: "/settings", label: "Settings", icon: "lock" },
+]
 
 function Sidebar() {
-  return (
-    <div className="w-64 h-screen bg-blue-600 dark:bg-gray-900 text-white p-6 flex flex-col">
-      <h1 className="text-3xl font-bold mb-10">Health AI</h1>
+  const [open, setOpen] = useState(false)
+  const location = useLocation()
+  const navigate = useNavigate()
 
-      <nav className="flex flex-col gap-2">
-        <Link to="/" className="hover:bg-blue-500 dark:hover:bg-gray-700 p-3 rounded-xl transition">
-          Dashboard
-        </Link>
-        <Link to="/activity" className="hover:bg-blue-500 dark:hover:bg-gray-700 p-3 rounded-xl transition">
-          Activity
-        </Link>
-        <Link to="/profile" className="hover:bg-blue-500 dark:hover:bg-gray-700 p-3 rounded-xl transition">
-          Profile
-        </Link>
-        <Link to="/recommendations" className="hover:bg-blue-500 dark:hover:bg-gray-700 p-3 rounded-xl transition">
-          AI Recommendations
-        </Link>
-      </nav>
-    </div>
+  function handleLogout() {
+    localStorage.removeItem("token")
+    navigate("/login")
+  }
+
+  return (
+    <>
+      <button
+        onClick={() => setOpen(true)}
+        className="lg:hidden fixed top-4 left-4 z-40 w-10 h-10 bg-blue-600 text-white rounded-xl flex items-center justify-center shadow-md"
+      >
+        <Icon name="menu" className="w-5 h-5" />
+      </button>
+
+      {open && (
+        <div className="lg:hidden fixed inset-0 bg-black/40 z-40" onClick={() => setOpen(false)} />
+      )}
+
+      <div className={`
+        fixed lg:static inset-y-0 left-0 z-50
+        w-64 h-screen bg-blue-600 dark:bg-gray-900 text-white p-6 flex flex-col
+        transition-transform duration-300
+        ${open ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
+      `}>
+        <div className="flex items-center justify-between mb-10">
+          <Link to="/" onClick={() => setOpen(false)} className="text-2xl font-bold hover:opacity-80 transition tracking-tight">
+            Health AI
+          </Link>
+          <button onClick={() => setOpen(false)} className="lg:hidden text-white/60 hover:text-white">
+            <Icon name="close" className="w-5 h-5" />
+          </button>
+        </div>
+
+        <nav className="flex flex-col gap-1 flex-1">
+          {links.map((link) => {
+            const active = location.pathname === link.to
+            return (
+              <Link
+                key={link.to}
+                to={link.to}
+                onClick={() => setOpen(false)}
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition text-sm font-medium
+                  ${active
+                    ? "bg-white/20 text-white"
+                    : "text-white/70 hover:bg-white/10 hover:text-white"
+                  }`}
+              >
+                <Icon name={link.icon} className="w-4 h-4 shrink-0" />
+                {link.label}
+                {active && <span className="ml-auto w-1.5 h-1.5 rounded-full bg-white" />}
+              </Link>
+            )
+          })}
+        </nav>
+
+        <button
+          onClick={handleLogout}
+          className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-white/70 hover:bg-white/10 hover:text-white transition mt-4"
+        >
+          <Icon name="logout" className="w-4 h-4 shrink-0" />
+          Log out
+        </button>
+      </div>
+    </>
   )
 }
 
