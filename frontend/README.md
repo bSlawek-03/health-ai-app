@@ -1,16 +1,37 @@
-# React + Vite
+# Health AI App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Description
+Health AI App is a cloud-based web application for monitoring health activity and generating AI recommendations.
 
-Currently, two official plugins are available:
+## Features
+- Health dashboard
+- Activity tracking
+- AI recommendations
+- User profile management
+- Charts and analytics
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Technologies
+### Frontend
+- React
+- Tailwind CSS
+- Recharts
 
-## React Compiler
+### Backend
+- Node.js
+- Express.js
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### DevOps
+- Docker
+- Docker Compose
+- GitHub
 
-## Expanding the ESLint configuration
+### AI
+- OpenAI API
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Project Structure
+```txt
+frontend/
+backend/
+database/
+docs/
+docker/
