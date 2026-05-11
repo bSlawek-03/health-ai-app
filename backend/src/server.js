@@ -14,9 +14,8 @@ app.use(cors());
 
 app.use(express.json());
 
-app.use("/auth", authRoutes);
-
-app.use("/activities", activityRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/activities", activityRoutes);
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
@@ -26,8 +25,10 @@ mongoose.connect(process.env.MONGO_URI)
     console.log(err);
   });
 
-app.get("/", (req, res) => {
-  res.send("API działa");
+app.get("/api/test", (req, res) => {
+  res.json({
+    message: "Backend działa poprawnie"
+  });
 });
 
 const PORT = process.env.PORT || 5000;
