@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import Icon from "./Icon"
 
 const links = [
@@ -13,6 +13,12 @@ const links = [
 function Sidebar() {
   const [open, setOpen] = useState(false)
   const location = useLocation()
+  const navigate = useNavigate()
+
+  function handleLogout() {
+    localStorage.removeItem("token")
+    navigate("/login")
+  }
 
   return (
     <>
@@ -42,7 +48,7 @@ function Sidebar() {
           </button>
         </div>
 
-        <nav className="flex flex-col gap-1">
+        <nav className="flex flex-col gap-1 flex-1">
           {links.map((link) => {
             const active = location.pathname === link.to
             return (
@@ -63,6 +69,14 @@ function Sidebar() {
             )
           })}
         </nav>
+
+        <button
+          onClick={handleLogout}
+          className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-white/70 hover:bg-white/10 hover:text-white transition mt-4"
+        >
+          <Icon name="logout" className="w-4 h-4 shrink-0" />
+          Log out
+        </button>
       </div>
     </>
   )
