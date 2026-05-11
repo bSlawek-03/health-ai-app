@@ -1,10 +1,20 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Recommendations from "./pages/Recommendations"
+
+import Dashboard from "./pages/Dashboard"
+import Activity from "./pages/Activity"
+import Profile from "./pages/Profile"
+
 function App() {
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <h1 className="text-5xl font-bold text-blue-600">
-        Health AI App
-      </h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/activity" element={<Activity />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/recommendations" element={<Recommendations />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
