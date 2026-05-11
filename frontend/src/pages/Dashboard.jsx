@@ -8,28 +8,28 @@ function Dashboard() {
     <div className="flex">
       <Sidebar />
 
-      <div className="flex-1 min-h-screen bg-gray-100 p-8">
+      <div className="flex-1 min-h-screen bg-gray-100 dark:bg-gray-900 p-8">
         <Topbar />
 
         <div className="grid grid-cols-4 gap-6">
-          <div className="bg-white p-6 rounded-2xl shadow">
-            <h2 className="text-gray-500">Steps</h2>
-            <p className="text-3xl font-bold mt-2">8,245</p>
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow">
+            <h2 className="text-gray-500 dark:text-gray-400">Steps</h2>
+            <p className="text-3xl font-bold mt-2 text-gray-900 dark:text-white">8,245</p>
           </div>
 
-          <div className="bg-white p-6 rounded-2xl shadow">
-            <h2 className="text-gray-500">Calories</h2>
-            <p className="text-3xl font-bold mt-2">540</p>
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow">
+            <h2 className="text-gray-500 dark:text-gray-400">Calories</h2>
+            <p className="text-3xl font-bold mt-2 text-gray-900 dark:text-white">540</p>
           </div>
 
-          <div className="bg-white p-6 rounded-2xl shadow">
-            <h2 className="text-gray-500">Sleep</h2>
-            <p className="text-3xl font-bold mt-2">7.5h</p>
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow">
+            <h2 className="text-gray-500 dark:text-gray-400">Sleep</h2>
+            <p className="text-3xl font-bold mt-2 text-gray-900 dark:text-white">7.5h</p>
           </div>
 
-          <div className="bg-white p-6 rounded-2xl shadow">
-            <h2 className="text-gray-500">BMI</h2>
-            <p className="text-3xl font-bold mt-2">22.4</p>
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow">
+            <h2 className="text-gray-500 dark:text-gray-400">BMI</h2>
+            <p className="text-3xl font-bold mt-2 text-gray-900 dark:text-white">22.4</p>
           </div>
         </div>
 
